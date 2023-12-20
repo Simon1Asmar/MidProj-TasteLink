@@ -5,6 +5,8 @@ import { AuthContext } from "../contexts/AuthContext";
 import { useEffect } from "react";
 import { useState } from "react";
 
+import { Outlet, useNavigate } from "react-router-dom";
+
 function SignInOrUpCard() {
   const {
     email,
@@ -25,15 +27,20 @@ function SignInOrUpCard() {
 
   const [isSignIn, setIsSignIn] = useState(true);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
-    console.log("LOGGED In?", isLoggedIn);
+    if(isLoggedIn){
+      //navigate to /
+      navigate("/");
+    }
   }, [isLoggedIn]);
 
   const signInformElements = () => {
     return (
-      <section>
+      <>
         <h2>Sign In</h2>
-        <form onSubmit={signIn}>
+        <form onSubmit={signIn}className="flex-column">
           <input
             type="email"
             name="email"
@@ -65,15 +72,15 @@ function SignInOrUpCard() {
             Create New Account
           </a>
         </form>
-      </section>
+      </>
     );
   };
 
   const registerFormElements = () => {
     return (
-      <section>
+      <>
         <h2>Sign Up</h2>
-        <form onSubmit={signUp}>
+        <form onSubmit={signUp} className="flex-column">
           <input
             type="text"
             name="name"
@@ -135,18 +142,19 @@ function SignInOrUpCard() {
             Sign In
           </a>
         </form>
-      </section>
+      </>
     );
   };
 
   return (
-    <section>
-      {isSignIn ? signInformElements() : registerFormElements()}
-
-      {errorMsg && <p style={{ color: "red" }}>{errorMsg}</p>}
+    <section className="pageSection">
+      <section className="authenticationContainer">
+        {errorMsg && <p style={{ color: "red" }}>{errorMsg}</p>}
+        {isSignIn ? signInformElements() : registerFormElements()}
+      </section>
 
       {/* TEMPORARILY HERE */}
-      {isLoggedIn && <button onClick={logOut}>Log Out</button>}
+      {/* {isLoggedIn && <button onClick={logOut}>Log Out</button>} */}
     </section>
   );
 }

@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 function RestaurantAdminPage() {
   return (
-    <div>RestaurantAdminPage</div>
-  )
+    <section className="pageSection">
+      <div>RestaurantAdminPage</div>
+    </section>
+  );
 }
 
-export default RestaurantAdminPage
+export default RestaurantAdminPage;

@@ -36,7 +36,7 @@ function App() {
             <Header/>
             <Routes>
               <Route path="/" element={<HomePage />} />
-              <Route path="UserAuthentication" element={<SignInOrUpCard />} />
+              <Route path="/UserAuthentication" element={<SignInOrUpCard />} />
               <Route
                 path="/RestaurantAdminPage"
                 element={<RestaurantAdminPage />}
