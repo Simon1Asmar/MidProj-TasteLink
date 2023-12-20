@@ -1,6 +1,8 @@
 import React from "react";
 
 import { createContext } from "react";
+import UsersContext from "./UsersContext";
+import { useContext } from "react";
 
 import { auth } from "../config/firebase";
 import {
@@ -19,6 +21,11 @@ const AuthProvider = ({ children }) => {
   const [errorMsg, setErrorMsg] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userData, setUserData] = useState(null);
+  const [name, setName] = useState("");
+  const [role, setRole] = useState("user");
+
+
+  const {usersData, onCreateNewUser, findUserWithID} = useContext(UsersContext);
 
   // useEffect(() => {
   //   if (auth?.currentUser) {
@@ -46,9 +53,14 @@ const AuthProvider = ({ children }) => {
     e.preventDefault();
 
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
-
-      const user = auth.currentUser;
+      await createUserWithEmailAndPassword(auth, email, password)
+      await onCreateNewUser(role, auth.currentUser.uid)
+      
+      const user = {
+        ...auth.currentUser,
+        ...findUserWithID(auth.currentUser.uid)
+      };
+      // const user = auth.currentUser;
       setUserData(user);
       localStorage.setItem("currentUser", JSON.stringify(user));
       setIsLoggedIn(true);
@@ -69,7 +81,12 @@ const AuthProvider = ({ children }) => {
       //   console.log("finally");
       //   setErrorMsg(null);
       // });
-      const user = auth.currentUser;
+      const user = {
+        ...auth.currentUser,
+        ...findUserWithID(auth.currentUser.uid)
+      };
+      // const user = auth.currentUser;
+      //IMPORTANT!!!: WE MUST ALSO GET THE USER INFO FROM FIRESTORE AND SAVE IT INSIDE USER
       setUserData(user);
       setIsLoggedIn(true);
       setErrorMsg(null);
@@ -85,6 +102,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const logOut = async () => {
+    console.log("logging out", userData);
     try {
       signOut(auth);
       setIsLoggedIn(false);
@@ -106,6 +124,10 @@ const AuthProvider = ({ children }) => {
     signUp,
     logOut,
     userData,
+    setName,
+    name,
+    setRole,
+    role,
   };
 
   return (
