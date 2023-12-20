@@ -34,12 +34,13 @@ const UsersProvider = ({children}) => {
     fetchData();
   },[]);
 
-  const onCreateNewUser = async (role, uid) => {
+  const onCreateNewUser = async (role, uid, name) => {
     try {
 
       await addDoc(usersCollectionRef, {
         "role": role,
-        uid: uid
+        uid: uid,
+        name: name
       });
 
       fetchData();

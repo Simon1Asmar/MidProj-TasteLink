@@ -9,10 +9,10 @@ import AuthProvider from "./contexts/AuthContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   // <React.StrictMode>
-  <UsersProvider>
-    <AuthProvider>
+  // <UsersProvider>
+  //   <AuthProvider>
       <App />
-    </AuthProvider>
-  </UsersProvider>
+  //   </AuthProvider>
+  // </UsersProvider>
   // </React.StrictMode>,
 );

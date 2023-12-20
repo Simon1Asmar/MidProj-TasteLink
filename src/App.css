@@ -1,4 +1,44 @@
-#root {
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #111;
+
+  min-height: 100vh;
+  width: 100vw;
+
+  color: white;
+}
+
+.header{
+  height: 10vh;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.header nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.header img{
+  height: 9vh;
+  width: 100;
+  
+}
+
+
+/* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -39,4 +79,4 @@
 
 .read-the-docs {
   color: #888;
-}
+} */

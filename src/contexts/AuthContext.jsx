@@ -13,6 +13,8 @@ import {
 import { useState } from "react";
 import { useEffect } from "react";
 
+import { Outlet, useNavigate } from "react-router-dom";
+
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
@@ -23,6 +25,8 @@ const AuthProvider = ({ children }) => {
   const [userData, setUserData] = useState(null);
   const [name, setName] = useState("");
   const [role, setRole] = useState("user");
+
+  let navigate = useNavigate();
 
 
   const {usersData, onCreateNewUser, findUserWithID} = useContext(UsersContext);
@@ -54,7 +58,7 @@ const AuthProvider = ({ children }) => {
 
     try {
       await createUserWithEmailAndPassword(auth, email, password)
-      await onCreateNewUser(role, auth.currentUser.uid)
+      await onCreateNewUser(role, auth.currentUser.uid, name)
       
       const user = {
         ...auth.currentUser,
@@ -66,6 +70,12 @@ const AuthProvider = ({ children }) => {
       setIsLoggedIn(true);
     } catch (err) {
       console.error(err);
+      if (err.code === "auth/email-already-in-use") {
+        setErrorMsg("This email is already registered");
+      } else {
+        setErrorMsg(err.message.substring(err.message.indexOf(":") + 1, err.message.indexOf("(auth")).trim())
+        // setErrorMsg(err.message);
+      }
     }
   };
 
@@ -108,6 +118,7 @@ const AuthProvider = ({ children }) => {
       setIsLoggedIn(false);
       setUserData(null);
       localStorage.removeItem("currentUser");
+      navigate("/");
     } catch (err) {
       console.error(err);
     }

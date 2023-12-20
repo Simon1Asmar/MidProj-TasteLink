@@ -23,12 +23,14 @@ function SignInOrUpCard() {
     role,
   } = useContext(AuthContext);
 
+  const [isSignIn, setIsSignIn] = useState(true);
+
   useEffect(() => {
     console.log("LOGGED In?", isLoggedIn);
   }, [isLoggedIn]);
 
-  return (
-    <section>
+  const signInformElements = () => {
+    return (
       <section>
         <h2>Sign In</h2>
         <form onSubmit={signIn}>
@@ -38,6 +40,7 @@ function SignInOrUpCard() {
             id="email"
             placeholder="Email..."
             onChange={(e) => setEmail(e.target.value)}
+            value={email}
             required
           />
           <input
@@ -46,28 +49,42 @@ function SignInOrUpCard() {
             id="password"
             placeholder="Password..."
             onChange={(e) => setPassword(e.target.value)}
+            value={password}
             required
           />
           <button type="submit">Sign In</button>
 
-          {errorMsg && <p style={{ color: "red" }}>{errorMsg}</p>}
+          <a
+            onClick={() => {
+              setEmail("");
+              setPassword("");
+              setName("");
+              setIsSignIn(false);
+            }}
+          >
+            Create New Account
+          </a>
         </form>
       </section>
+    );
+  };
 
+  const registerFormElements = () => {
+    return (
       <section>
         <h2>Sign Up</h2>
         <form onSubmit={signUp}>
           <input
             type="text"
             name="name"
-            value={name}
             onChange={(e) => setName(e.target.value)}
+            value={name}
             required
             placeholder="Name"
           />
           <input
             type="email"
-            name="email"
+            name="email2"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -75,7 +92,7 @@ function SignInOrUpCard() {
           />
           <input
             type="password"
-            name="password"
+            name="password2"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -106,8 +123,27 @@ function SignInOrUpCard() {
           </label>
 
           <button type="submit">Sign Up</button>
+
+          <a
+            onClick={() => {
+              setEmail("");
+              setPassword("");
+              setName("");
+              setIsSignIn(true);
+            }}
+          >
+            Sign In
+          </a>
         </form>
       </section>
+    );
+  };
+
+  return (
+    <section>
+      {isSignIn ? signInformElements() : registerFormElements()}
+
+      {errorMsg && <p style={{ color: "red" }}>{errorMsg}</p>}
 
       {/* TEMPORARILY HERE */}
       {isLoggedIn && <button onClick={logOut}>Log Out</button>}
