@@ -32,7 +32,12 @@ function SignInOrUpCard() {
   useEffect(() => {
     if(isLoggedIn){
       //navigate to /
-      navigate("/");
+      console.log("USER ROLE IS", userData.role);
+      if(userData.role === "restaurant"){
+        navigate("/RestaurantAdminPage");
+      } else{
+        navigate("/");
+      }
     }
   }, [isLoggedIn]);
 

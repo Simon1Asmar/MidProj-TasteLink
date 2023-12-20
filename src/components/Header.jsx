@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
-import { useEffect } from "react";
 
 const Header = () => {
   const { isLoggedIn, logOut } = useContext(AuthContext);
