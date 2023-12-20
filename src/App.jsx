@@ -9,20 +9,32 @@ import { useContext } from "react";
 import { AuthContext } from "./contexts/AuthContext";
 
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import SignInOrUpCard from "./components/SignInOrUpCard";
 
 function App() {
-  const { isLoggedIn } = useContext(AuthContext);
+  const {
+    email,
+    setEmail,
+    password,
+    setPassword,
+    errorMsg,
+    isLoggedIn,
+    signIn,
+    signUp,
+    logOut,
+    userData,
+  } = useContext(AuthContext);
 
   return (
     <>
       {/* <UsersProvider> */}
-        <BrowserRouter>
-
-          <Routes>
-            <Route path="/" element={<UsersTemporaryComponent />}/>
-          </Routes>
-        </BrowserRouter>
-        {isLoggedIn ? ( <p>Logged in</p> ) : ( <p>Not Logged In</p> )}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<UsersTemporaryComponent />} />
+          <Route path="UserAuthentication" element={<SignInOrUpCard/>}/>
+        </Routes>
+      </BrowserRouter>
+      {isLoggedIn ? <p>Logged in</p> : <p>Not Logged In</p>}
       {/* </UsersProvider> */}
     </>
   );
