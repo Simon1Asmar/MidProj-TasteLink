@@ -1,8 +1,11 @@
-# React + Vite
+# TasteLink
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+-[Netlify Link](https://zippy-profiterole-117dfb.netlify.app/)
 
-Currently, two official plugins are available:
+Project Idea: a website that links restaurants with users for ordering food and applying for jobs (special feature).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<br/>
+
+I used Firebase for authentication and database (self learning)
+
+<br/>
