@@ -29,8 +29,8 @@ function BottomNavBar() {
     <>
       {isLoggedIn && (
         <section className="bottomNav">
-          {console.log("USER ROLE IS", role)}
-          {userData.role === "restaurant" && (
+          {console.log("USER ROLE IS", userData.role)}
+          {(userData.role === "restaurant" || role==="restaurant") && (
             <>
               <Link to="/">
                 <BottomNavButton page="Home" />
@@ -38,15 +38,15 @@ function BottomNavBar() {
               <Link to="/RestaurantAdminPage">
                 <BottomNavButton page="Menu" />
               </Link>
-              <Link to="/RestaurantJobs">
+              <Link to="/Jobs">
                 <BottomNavButton page="Jobs" />
               </Link>
-              <Link to="/RestaurantProfile">
+              <Link to="/Profile">
                 <BottomNavButton page="Profile" />
               </Link>
             </>
           )}
-          {userData.role === "user" && (
+          {(userData.role === "user" || role === "user") && (
             <>
               <Link to="/">
                 <BottomNavButton page="Home" />

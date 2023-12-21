@@ -14,6 +14,10 @@ import HomePage from "./components/HomePage.jsx";
 import Header from "./components/Header.jsx";
 import BottomNavBar from "./components/BottomNavBar.jsx";
 import MenuPage from "./components/MenuPage.jsx";
+import JobsPage from "./components/JobsPage.jsx";
+import ProfilePage from "./components/ProfilePage.jsx";
+import CartPage from "./components/CartPage.jsx";
+import OrdersPage from "./components/OrdersPage.jsx";
 
 function App() {
   // const {
@@ -44,6 +48,10 @@ function App() {
                 element={<RestaurantAdminPage />}
               />
               <Route path="/menu/:id" element={<MenuPage />}/>
+              <Route path="/Jobs" element={<JobsPage/>}/>
+              <Route path="/Profile" element={<ProfilePage/>}/>
+              <Route path="/Cart" element={<CartPage/>}/>
+              <Route path="/Orders" element={<OrdersPage/>}/>
               <Route path='/Error404' element={<ErrorPage/>}/>
               <Route path='*' element={<ErrorPage/>}/>
             </Routes>

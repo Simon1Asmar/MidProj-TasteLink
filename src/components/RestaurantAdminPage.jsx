@@ -23,6 +23,7 @@ function RestaurantAdminPage() {
 
   return (
     <section className="pageSection">
+      
       <section>
         <p>Add New Item</p>
         <form
@@ -90,6 +91,14 @@ function RestaurantAdminPage() {
       <section>
 
       </section>
+
+      <h3>COMING SOON</h3>
+      <ul>
+        <li>View Items</li>
+        <li>Update Items</li>
+        <li>Delete Items</li>
+      </ul>
+
     </section>
   );
 }
