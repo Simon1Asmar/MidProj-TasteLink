@@ -18,7 +18,9 @@ const HomePage = () => {
 
           return(
           
-          <RestaurantCard key={restaurant.uid} imgURL={imageLink} name={restaurant.name} />
+
+            <RestaurantCard key={restaurant.id} id={restaurant.id} imgURL={imageLink} name={restaurant.name} />
+
           // <p>{restaurant.name}</p>
         )})}
       </section>

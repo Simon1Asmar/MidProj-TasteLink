@@ -13,9 +13,12 @@ body {
   color: white;
 
   text-align: center;
+
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.header{
+.header,
+.bottomNav{
   height: 10vh;
   background-color: black;
   display: flex;
@@ -24,7 +27,8 @@ body {
   
 }
 
-.header nav {
+.header nav,
+.bottomNav nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -63,6 +67,7 @@ a:hover{
   min-height: 80vh;
   width: 100%;
 
+  padding: 5vh 30px 10vh 30px;
 }
 
 .authenticationContainer{
@@ -126,7 +131,7 @@ input{
   cursor: pointer;
 
   height: max-content;
-  width: 120px;
+  /* width: 200px; */
 
   display: flex;
   flex-direction: column;
@@ -141,16 +146,70 @@ input{
 
   /* background-color: #111;
   border: white 2px solid; */
-  /* border-radius: 15px; */
+  padding: 20px;
+  border-radius: 15px;
+  
+}
+
+.item-card:hover{
+  background-color: rgba(240, 248, 255, 0.08);
 }
 
 .item-card>img{
-  height: 100px;
-  width: 100px;
+  height: 150px;
+  width: 150px;
   border-radius: 15px;
 
   object-fit: cover;
   object-position: center;
+}
+
+.bottomNav{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+}
+
+.bottom-nav-btn>.icon{
+  height: 5vh;
+  width: 5vh;
+  padding: 0;
+}
+
+.bottom-nav-btn{
+  height: 10vh;
+  min-width: 10vh;
+  line-height: 1em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  /* border-radius: 5px; */
+  font-size: 0.6rem;
+
+  font-weight: bold;
+  padding: 5px;
+}
+
+.bottom-nav-btn:hover{
+  background-color: #111;
+}
+
+.add-to-cart-btn{
+  background-color: #111;
+  border: 2px white solid;
+  border-radius: 5px;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.add-to-cart-btn:hover{
+  background-color: #222;
+  color: rgb(255, 197, 97);
+  border-color: rgb(255, 197, 97);
 }
 
 /* #root {

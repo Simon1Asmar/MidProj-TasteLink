@@ -19,13 +19,15 @@ const Header = () => {
           <img src={siteLogo} alt="Taste Link" />
         </Link>
 
-        {isLoggedIn ? (
-          <MdLogout onClick={logOut} className="logOutButton" />
-        ) : (
-          <Link to="/UserAuthentication">
-            <MdLogin className="logOutButton" />
-          </Link>
-        )}
+        <div className="bottom-nav-btn">
+          {isLoggedIn ? (
+            <MdLogout onClick={logOut} className="logOutButton" />
+          ) : (
+            <Link to="/UserAuthentication">
+              <MdLogin className="logOutButton" />
+            </Link>
+          )}
+        </div>
       </nav>
     </section>
   );

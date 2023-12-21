@@ -121,6 +121,22 @@ const UsersProvider = ({ children }) => {
     }
   };*/
 
+  const createNewJob = async (id, newJob) => {
+    const restaurantDoc = doc(db, "users", id);
+
+    const restaurant = listOfRestaurants.find(rest => rest.id === id);
+
+    const existingJobs = (restaurant && restaurant.restaurantJobs) || [];
+
+    const restaurantJobs = Array.isArray(existingJobs) ? existingJobs : [];
+
+    restaurantJobs.push(newJob);
+
+    console.log('restaurantDoc', restaurantDoc);
+
+    await updateDoc(restaurantDoc, { restaurantJobs: restaurantJobs });
+  }  
+
   return (
     <UsersContext.Provider
       value={{
@@ -130,6 +146,7 @@ const UsersProvider = ({ children }) => {
         listOfRestaurants,
         listOfNormalUsers,
         addMenuItemToRestaurant,
+        createNewJob
       }}
     >
       {children}

@@ -12,6 +12,8 @@ import RestaurantAdminPage from "./components/RestaurantAdminPage";
 import ErrorPage from "./components/ErrorPage.jsx";
 import HomePage from "./components/HomePage.jsx";
 import Header from "./components/Header.jsx";
+import BottomNavBar from "./components/BottomNavBar.jsx";
+import MenuPage from "./components/MenuPage.jsx";
 
 function App() {
   // const {
@@ -41,8 +43,11 @@ function App() {
                 path="/RestaurantAdminPage"
                 element={<RestaurantAdminPage />}
               />
+              <Route path="/menu/:id" element={<MenuPage />}/>
+              <Route path='/Error404' element={<ErrorPage/>}/>
               <Route path='*' element={<ErrorPage/>}/>
             </Routes>
+            <BottomNavBar/>
           </AuthProvider>
         </UsersProvider>
       </BrowserRouter>

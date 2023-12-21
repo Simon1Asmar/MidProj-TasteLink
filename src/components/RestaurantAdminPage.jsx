@@ -6,7 +6,7 @@ import { AuthContext } from "../contexts/AuthContext";
 import { useState } from "react";
 
 function RestaurantAdminPage() {
-  const { addMenuItemToRestaurant } = useContext(UsersContext);
+  const { addMenuItemToRestaurant, createNewJob } = useContext(UsersContext);
   const { userData } = useContext(AuthContext);
 
   const [newItem, setNewItem] = useState({
@@ -14,6 +14,12 @@ function RestaurantAdminPage() {
     price: 0,
     imageURL: "",
   });
+
+  const [newJob, setNewJob] = useState({
+    jobTitle: "",
+    datePosted: "",
+    description: ""
+  })
 
   return (
     <section className="pageSection">
@@ -79,6 +85,10 @@ function RestaurantAdminPage() {
 
           <button type="submit">Add</button>
         </form>
+      </section>
+
+      <section>
+
       </section>
     </section>
   );
