@@ -91,6 +91,8 @@ const UsersProvider = ({ children }) => {
     console.log('restaurantDoc', restaurantDoc);
 
     await updateDoc(restaurantDoc, { menuItems: menuItems });
+
+    fetchData();
   }
   /*const addMenuItemToRestaurant = async (id, newItem) => {
     try {

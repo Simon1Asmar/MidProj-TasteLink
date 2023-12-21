@@ -46,7 +46,7 @@ function BottomNavBar() {
               </Link>
             </>
           )}
-          {(userData.role === "user" || role === "user") && (
+          {(userData.role === "user" || (role === "user" && userData.role !== "restaurant")) && (
             <>
               <Link to="/">
                 <BottomNavButton page="Home" />
